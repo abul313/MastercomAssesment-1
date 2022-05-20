@@ -1,5 +1,6 @@
 package com.mastercom.employee.service;
 
+import com.mastercom.employee.entity.Project;
 import com.mastercom.employee.entity.Resource;
 import com.mastercom.employee.repository.ProjectRepository;
 import com.mastercom.employee.repository.ResourceRepository;
@@ -32,8 +33,10 @@ public class ResourceService {
         List<Resource> resources = getProjectsResources();
         int count = (int) resources.stream().filter(r -> r.getResourceName().equals(resource.getResourceName())).count();
 
-        if (count > 3) {
-            return null;
+        if (count >= 3) {
+            Resource r= new Resource();
+            r.setMessage("Invalid Request");
+            return r;
         }
 
         AtomicBoolean isEndingEarly = new AtomicBoolean(false);
@@ -55,7 +58,9 @@ public class ResourceService {
                 });
 
         if (isEndingEarly.get()) {
-            return  null;
+            Resource r= new Resource();
+            r.setMessage("Invalid Request");
+            return r;
         }
 
         return resourceRepository.save(resource);

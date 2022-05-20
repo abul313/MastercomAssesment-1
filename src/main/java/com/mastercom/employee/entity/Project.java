@@ -25,6 +25,15 @@ public class Project {
     @Column(name = "client_name", nullable = false)
     private String clientName;
 
+public String message;
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 
     public Long getProjectId() {
         return projectId;

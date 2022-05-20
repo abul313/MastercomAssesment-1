@@ -42,4 +42,14 @@ public class Resource {
     public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
+    public String message;
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
 }
